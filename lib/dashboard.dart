@@ -7,6 +7,8 @@ import 'package:http/http.dart' as http;
 import 'detailproduk.dart';
 
 class Dashboard extends StatefulWidget {
+  final int token;
+  Dashboard({Key? key, required this.token}) : super(key: key);
   @override
   _IndexPageState createState() => _IndexPageState();
 }
@@ -79,7 +81,6 @@ class _IndexPageState extends State<Dashboard> {
     var deskripsi = item['deskripsi'];
     var gambar = item['gambar'];
     return Card(
-      // make card background color white
       color: Colors.white,
       elevation: 1.5,
       child: Padding(
@@ -123,7 +124,8 @@ class _IndexPageState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => DetailProduk(
-                                    id: item['id'].toString(),
+                                    id: item['id'],
+                                    token: widget.token,
                                   )));
                     },
                     child: Container(
