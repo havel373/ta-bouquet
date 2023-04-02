@@ -34,7 +34,7 @@ class startpage extends StatelessWidget {
                                       vertical: 15.0, horizontal: 45.0),
                                   alignment: AlignmentDirectional.bottomEnd,
 
-                                  backgroundColor: const Color(0xff232323)),
+                                  backgroundColor: const Color(0xff314437)),
                               onPressed: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(

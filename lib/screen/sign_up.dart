@@ -4,6 +4,11 @@ import 'package:ta/screen/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart';
+import 'package:ta/themes/color.dart';
+import 'package:ta/themes/color.dart';
+
+import '../themes/color.dart';
+import '../themes/color.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -106,7 +111,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 2, vertical: 5),
                             decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                             child: TextFormField(
@@ -126,7 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 2, vertical: 5),
                             decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                             child: TextFormField(
@@ -146,7 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 2, vertical: 5),
                             decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                             child: TextFormField(
@@ -178,7 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: const Text(
                         'Sudah punya akun? silahkan login disini',
                         style: TextStyle(
-                            color: Color.fromARGB(255, 5, 5, 5),
+                            color: Color.fromARGB(255, 77, 0, 227),
                             fontSize: 15,
                             fontWeight: FontWeight.bold),
                       ),
@@ -195,10 +200,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                          color: Colors.green,
+                          color: buttonColor,
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
-                        child: Text('Register'),
+                        child: Text('Register', style: TextStyle(
+                          color: Colors.white,
+                        )),
                       ),
                     ),
                   )

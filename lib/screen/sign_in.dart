@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'package:ta/screen/HomePage.dart';
 import 'package:ta/screen/sign_up.dart';
 import 'package:ta/screen/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:ta/themes/color.dart';
 
 class loginpage extends StatefulWidget {
   const loginpage({Key? key}) : super(key: key);
@@ -40,9 +42,7 @@ class _SignInScreenState extends State<loginpage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Dashboard(
-                                  token: data['user']['id'],
-                                )),
+                            builder: (context) => HomePage()),
                       );
                     },
                   ),
@@ -121,7 +121,7 @@ class _SignInScreenState extends State<loginpage> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 2, vertical: 5),
                             decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                color: Color.fromARGB(255, 255, 255, 255),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                             child: TextFormField(
@@ -141,7 +141,7 @@ class _SignInScreenState extends State<loginpage> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 2, vertical: 5),
                             decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                             child: TextFormField(
@@ -151,11 +151,13 @@ class _SignInScreenState extends State<loginpage> {
                                 hintText: "Password",
                                 border: InputBorder.none,
                                 prefixIcon:
-                                    Icon(Icons.vpn_key, color: Colors.grey),
+                                    Icon(Icons.vpn_key, color: Colors.grey,
                               ),
                             ),
                           ),
-                        ]),
+                          )
+                        ]
+                          ),
                   ),
                   const SizedBox(
                     height: 15,
@@ -173,7 +175,7 @@ class _SignInScreenState extends State<loginpage> {
                       child: const Text(
                         'Belum punya akun? Daftar disini',
                         style: TextStyle(
-                            color: Color.fromARGB(255, 5, 5, 5),
+                            color: Color.fromARGB(255, 77, 0, 227),
                             fontSize: 15,
                             fontWeight: FontWeight.bold),
                       ),
@@ -188,10 +190,13 @@ class _SignInScreenState extends State<loginpage> {
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                          color: Colors.green,
+                          color: buttonColor,
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
-                        child: Text('Login'),
+                        child: Text(
+                            'Login', style: TextStyle(
+                          color: Colors.white,
+                        )),
                       ),
                     ),
                   )

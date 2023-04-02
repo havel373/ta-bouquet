@@ -21,7 +21,7 @@ class chooseuser extends StatelessWidget {
           height: 45,
           child: ElevatedButton(
               style: TextButton.styleFrom(
-                  backgroundColor: const Color(0xff232323)),
+                  backgroundColor: const Color(0xff314437)),
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(
@@ -38,7 +38,7 @@ class chooseuser extends StatelessWidget {
             height: 45,
             child: ElevatedButton(
               style: TextButton.styleFrom(
-                  backgroundColor: const Color(0xff232323)),
+                  backgroundColor: const Color(0xff314437)),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(
