@@ -1,11 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:badges/badges.dart' as badges;
 
 class HomeAppBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> data;
-  const HomeAppBar({super.key, required this.data});
+  final int token;
+  const HomeAppBar({Key? key, required this.data, required this.token})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

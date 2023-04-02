@@ -42,7 +42,9 @@ class _SignInScreenState extends State<loginpage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomePage()),
+                            builder: (context) => HomePage(
+                                  token: data['user']['id'],
+                                )),
                       );
                     },
                   ),
@@ -150,14 +152,14 @@ class _SignInScreenState extends State<loginpage> {
                               decoration: const InputDecoration(
                                 hintText: "Password",
                                 border: InputBorder.none,
-                                prefixIcon:
-                                    Icon(Icons.vpn_key, color: Colors.grey,
+                                prefixIcon: Icon(
+                                  Icons.vpn_key,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ),
-                          ),
                           )
-                        ]
-                          ),
+                        ]),
                   ),
                   const SizedBox(
                     height: 15,
@@ -193,10 +195,10 @@ class _SignInScreenState extends State<loginpage> {
                           color: buttonColor,
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
-                        child: Text(
-                            'Login', style: TextStyle(
-                          color: Colors.white,
-                        )),
+                        child: Text('Login',
+                            style: TextStyle(
+                              color: Colors.white,
+                            )),
                       ),
                     ),
                   )

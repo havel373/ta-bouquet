@@ -14,33 +14,31 @@ import '../components/SideNavbar.dart';
 import 'dashboard.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  final int token;
+  HomePage({Key? key, required this.token}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
-  class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> {
+  int selectedPageIndex = 0;
+  int _selectedIndex = 0;
 
-    int selectedPageIndex = 0;
-    int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
-    void _onItemTapped(int index) {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
-
-    final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       key: _scaffoldState,
       body: ListView(
         children: [
-          HomeAppBar(data: _scaffoldState),
-
+          HomeAppBar(data: _scaffoldState, token: widget.token),
           Container(
             // height: 500,
             padding: EdgeInsets.only(top: 15),
@@ -68,14 +66,14 @@ class HomePage extends StatefulWidget {
                     ),
                   ),
                 ),
-                ItemsWidget(),
+                ItemsWidget(
+                  token: widget.token,
+                ),
               ],
             ),
           )
         ],
-
       ),
-
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -96,7 +94,5 @@ class HomePage extends StatefulWidget {
         onTap: _onItemTapped,
       ),
     );
-
   }
-
 }

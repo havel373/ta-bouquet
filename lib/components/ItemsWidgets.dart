@@ -1,60 +1,54 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
+import 'package:ta/themes/color.dart';
+import 'package:http/http.dart' as http;
 
 class ItemsWidget extends StatefulWidget {
-  const ItemsWidget({super.key});
+  final int token;
+  const ItemsWidget({Key? key, required this.token}) : super(key: key);
 
   @override
   State<ItemsWidget> createState() => _ItemsWidgetState();
 }
 
 class _ItemsWidgetState extends State<ItemsWidget> {
-  var products_list = [
-    {
-      "name": "Mawar Merah",
-      "image": "assets/images/1.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-      "price": 200000
-    },
-    {
-      "name": "Mawar Putih",
-      "image": "assets/images/2.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 200000
-    },
-    {
-      "name": "Mawar",
-      "image": "assets/images/3.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 200000
-    },
-    {
-      "name": "Coklat Dairy",
-      "image": "assets/images/4.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 200000
-    },
-    {
-      "name": "Coklat Silverqueen",
-      "image": "assets/images/5.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 200000
-    },
-    {
-      "name": "Lolipop 1",
-      "image": "assets/images/6.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 200000
-    },
-    {
-      "name": "Lolipop 2",
-      "image": "assets/images/7.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 200000
-    },
-  ];
+  List produk = [];
+  bool isLoading = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this.getdata();
+  }
+
+  void getdata() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+      var response = await http
+          .get(Uri.parse('http://bouquet.pnseirampah-semodal.com/api/produk/'));
+      print('produk response : ' + response.body.toString());
+      if (response.statusCode == 200) {
+        var items = json.decode(response.body)['data'];
+        print(items);
+        setState(() {
+          produk = items;
+          isLoading = false;
+        });
+      } else {
+        produk = [];
+        isLoading = false;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,53 +59,30 @@ class _ItemsWidgetState extends State<ItemsWidget> {
       ),
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: products_list.length,
+      itemCount: produk.length,
       itemBuilder: (BuildContext ctx, index) {
         return Container(
           padding: EdgeInsets.only(left: 15, right: 15, top: 10),
           // margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10), // this was before
-          margin: const EdgeInsets.fromLTRB(10,0,10,16),
+          margin: const EdgeInsets.fromLTRB(10, 0, 10, 16),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(
             children: [
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Container(
-              //       padding: EdgeInsets.all(5),
-              //       decoration: BoxDecoration(
-              //         color: Color.fromARGB(255, 235, 122, 56), //0xFF4C53A2
-              //         borderRadius: BorderRadius.circular(20),
-              //       ),
-              //       child: Text(
-              //         '-50%',
-              //         style: TextStyle(
-              //           fontSize: 14,
-              //           fontWeight: FontWeight.bold,
-              //           color: Colors.white,
-              //         ),
-              //       ),
-              //     ),
-              //     Icon(
-              //       Icons.favorite_border,
-              //       color: Colors.red,
-              //     ),
-              //   ],
-              // ),
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, 'itemPage');
                 },
                 child: Container(
-                  margin: EdgeInsets.all(10),
-                  child: Image.asset(
-                    "${products_list[index]['image']}",
-                    height: 90,
-                    width: 90,
-                  ),
+                  width: 170,
+                  height: 170,
+                  decoration: BoxDecoration(
+                      color: primary,
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage("${produk[index]['gambar']}"))),
                 ),
               ),
               Container(
@@ -120,7 +91,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                 alignment: Alignment.centerLeft,
                 child: SingleChildScrollView(
                   child: Text(
-                    "${products_list[index]['name']}",
+                    "${produk[index]['nama']}",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -134,7 +105,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                 height: 50,
                 child: SingleChildScrollView(
                   child: Text(
-                    "${products_list[index]['description']}",
+                    "${produk[index]['deskripsi']}",
                     style: TextStyle(
                       fontSize: 15,
                       color: Color.fromARGB(255, 0, 0, 0), //0xFF4C53A2
@@ -148,7 +119,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "\$${products_list[index]['price']}",
+                      "\$${produk[index]['harga']}",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
