@@ -9,6 +9,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  awesome_rating:
+    dependency: "direct main"
+    description:
+      name: awesome_rating
+      sha256: ac3576aa5d8b9aa13f36a200067851ecdb4f8d756bbd646e927202acad5ce2c3
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
+  badges:
+    dependency: "direct main"
+    description:
+      name: badges
+      sha256: d33d4e07197d6e61ddc940640f2b4dc303d3c80887011344940e24d7522f8d26
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -17,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  card_swiper:
+    dependency: "direct main"
+    description:
+      name: card_swiper
+      sha256: "0c94c538f47be1dab52d018d4900a7046b4cb0700dc7f95b8628da89d1212b35"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.4"
   characters:
     dependency: transitive
     description:
@@ -139,6 +163,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.2"
+  shimmer:
+    dependency: "direct main"
+    description:
+      name: shimmer
+      sha256: "1f1009b5845a1f88f1c5630212279540486f97409e9fc3f63883e71070d107bf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -210,3 +242,4 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=2.18.0 <3.0.0"
+  flutter: ">=1.17.0"

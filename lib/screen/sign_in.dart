@@ -1,7 +1,6 @@
 import 'dart:convert';
-
-import 'package:ta/sign_up.dart';
-import 'package:ta/dashboard.dart';
+import 'package:ta/screen/sign_up.dart';
+import 'package:ta/screen/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:flutter/src/widgets/basic.dart';
