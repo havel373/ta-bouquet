@@ -25,7 +25,7 @@ class _ItemAppBarState extends State<ItemAppBar> {
             child: Icon(
               Icons.arrow_back,
               size: 30,
-              color: Color.fromARGB(255, 235, 122, 56),
+              color: Color.fromARGB(255, 0, 0, 0),
             ),
           ),
           Padding(
@@ -40,12 +40,7 @@ class _ItemAppBarState extends State<ItemAppBar> {
             ),
           ),
           Spacer(),
-          Icon(
 
-            Icons.favorite,
-            size: 30,
-            color: Colors.red,
-          ),
         ],
       ),
     );

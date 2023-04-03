@@ -16,41 +16,11 @@ class _CartItemSamplesState extends State<CartItemSamples> {
       "name": "Mawar Merah",
       "image": "assets/images/1.png",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-      "price": 90
+      "price": 120000
     },
     {
       "name": "Mawar Putih",
       "image": "assets/images/2.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 90
-    },
-    {
-      "name": "Mawar",
-      "image": "assets/images/3.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 90
-    },
-    {
-      "name": "Coklat Dairy",
-      "image": "assets/images/4.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 90
-    },
-    {
-      "name": "Coklat Silverqueen",
-      "image": "assets/images/5.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 90
-    },
-    {
-      "name": "Lolipop 1",
-      "image": "assets/images/6.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "price": 90
-    },
-    {
-      "name": "Lolipop 2",
-      "image": "assets/images/7.png",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "price": 90
     },
@@ -86,7 +56,7 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                     child: Radio(
                       value: "",
                       groupValue: '',
-                      activeColor: Color.fromARGB(255, 235, 122, 56),
+                      activeColor: Color.fromARGB(255, 0, 0, 0),
                       onChanged: (index) {},
                     ),
                   ),
@@ -113,17 +83,17 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                               style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 235, 122, 56),
+                                color: Color.fromARGB(255, 0, 0, 0),
                               ),
                             ),
                           ),
                         ),
                         Text(
-                          "\$55",
+                          "Rp.120000",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 235, 122, 56),
+                            color: Color.fromARGB(255, 0, 0, 0),
                           ),
                         ),
                       ],
@@ -138,55 +108,8 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                       children: [
                         Icon(
                           Icons.delete,
-                          color: Colors.red,
+                          color: Colors.black,
                         ),
-                        Row(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        blurRadius: 10,
-                                        spreadRadius: 1)
-                                  ]),
-                              child: Icon(
-                                CupertinoIcons.minus,
-                                size: 18,
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 6),
-                              child: Text(
-                                '01',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 235, 122, 56),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        blurRadius: 10,
-                                        spreadRadius: 1)
-                                  ]),
-                              child: Icon(
-                                CupertinoIcons.plus,
-                                size: 18,
-                              ),
-                            ),
-                          ],
-                        )
                       ],
                     ),
                   )

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:ta/screen/CartPage.dart';
 
 class ItemBottomNavBar extends StatelessWidget {
   const ItemBottomNavBar({super.key});
@@ -35,7 +36,12 @@ class ItemBottomNavBar extends StatelessWidget {
               ),
             ),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CartPage()),
+                );
+              },
               icon: const Icon(CupertinoIcons.cart_badge_plus),
               label: const Text(
                 "Masukkan Ke Keranjang",

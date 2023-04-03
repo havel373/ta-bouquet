@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:ta/screen/CartPage.dart';
 
 class HomeAppBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> data;
@@ -21,13 +22,22 @@ class HomeAppBar extends StatelessWidget {
           child: Text(
             'DEL BOUQUET APP',
             style: TextStyle(
-              fontSize: 28,
+              fontSize: 22,
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 0, 0, 0), //0xFF4C53A2
             ),
           ),
         ),
         const Spacer(),
+        IconButton(
+          icon: const Icon(Icons.shopping_cart, color: Colors.black),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+          },
+        ),
       ]),
     );
   }

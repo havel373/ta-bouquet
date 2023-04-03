@@ -25,26 +25,26 @@ class _CartBottomNavBarState extends State<CartBottomNavBar> {
                 Text(
                   "Total: ",
                   style: TextStyle(
-                      color: Color.fromARGB(255, 235, 122, 56),
+                      color: Color.fromARGB(255, 255, 255, 255),
                       fontSize: 22,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  '\$250',
+                  'Rp. 120000',
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Colors.red,
+                    color: Colors.white,
                   ),
                 ),
               ],
             ),
             Container(
-              alignment: Alignment.center, // centramo inside a container
+              alignment: Alignment.center,
               height: 50,
               width: double.infinity, // it takes the whole diameter of the screen
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 235, 122, 56),
+                color: Color.fromARGB(255, 49, 68, 55),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
