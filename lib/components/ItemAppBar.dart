@@ -41,6 +41,7 @@ class _ItemAppBarState extends State<ItemAppBar> {
           ),
           Spacer(),
           Icon(
+
             Icons.favorite,
             size: 30,
             color: Colors.red,

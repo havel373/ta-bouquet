@@ -119,7 +119,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "\$${produk[index]['harga']}",
+                      "Rp. ${produk[index]['harga']}",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
