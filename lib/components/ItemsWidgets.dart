@@ -76,8 +76,8 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                   Navigator.pushNamed(context, 'itemPage');
                 },
                 child: Container(
-                  width: 170,
-                  height: 170,
+                  width: 100,
+                  height: 100,
                   decoration: BoxDecoration(
                       color: primary,
                       image: DecorationImage(

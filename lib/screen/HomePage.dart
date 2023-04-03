@@ -15,7 +15,7 @@ import 'dashboard.dart';
 
 class HomePage extends StatefulWidget {
   final int token;
-  HomePage({Key? key, required this.token}) : super(key: key);
+  const HomePage({Key? key, required this.token}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
