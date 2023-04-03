@@ -26,27 +26,27 @@ class ItemBottomNavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              '\$120',
+            const Text(
+              'Rp.120.000',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 235, 122, 56),
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
             ),
             ElevatedButton.icon(
               onPressed: () {},
-              icon: Icon(CupertinoIcons.cart_badge_plus),
-              label: Text(
+              icon: const Icon(CupertinoIcons.cart_badge_plus),
+              label: const Text(
                 "Masukkan Ke Keranjang",
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
-                    Color.fromARGB(255, 235, 122, 56)),
+                    Color.fromARGB(255, 49, 68, 55)),
                 padding: MaterialStateProperty.all(
                   EdgeInsets.symmetric(vertical: 13,horizontal: 15)
                 ),

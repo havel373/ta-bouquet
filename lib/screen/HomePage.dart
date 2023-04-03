@@ -10,7 +10,6 @@ import '../components/Carrusel.dart';
 import '../components/CategoriesWidget.dart';
 import '../components/HomeAppBar.dart';
 import '../components/ItemsWidgets.dart';
-import '../components/SideNavbar.dart';
 import 'dashboard.dart';
 
 class HomePage extends StatefulWidget {

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+import 'package:ta/screen/ItemDetailPage.dart';
 import 'package:ta/themes/color.dart';
 import 'package:http/http.dart' as http;
 
@@ -73,7 +74,8 @@ class _ItemsWidgetState extends State<ItemsWidget> {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, 'itemPage');
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => const ItemPage()));
                 },
                 child: Container(
                   width: 100,
