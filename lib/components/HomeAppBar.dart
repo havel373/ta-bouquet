@@ -1,16 +1,29 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:ta/themes/color.dart';
+import 'package:http/http.dart' as http;
+import 'package:awesome_rating/awesome_rating.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:badges/badges.dart' as badges;
 import 'package:ta/screen/CartPage.dart';
 
-class HomeAppBar extends StatelessWidget {
+class HomeAppBar extends StatefulWidget {
   final GlobalKey<ScaffoldState> data;
   final int token;
-  const HomeAppBar({Key? key, required this.data, required this.token})
+  HomeAppBar({Key? key, required this.data, required this.token})
       : super(key: key);
 
   @override
+  _HomeAppBarState createState() => _HomeAppBarState();
+}
+
+class _HomeAppBarState extends State<HomeAppBar> {
+  @override
   Widget build(BuildContext context) {
+
     return Container(
       color: Colors.white,
       padding: EdgeInsets.all(15), // before it as 25
@@ -33,9 +46,11 @@ class HomeAppBar extends StatelessWidget {
           icon: const Icon(Icons.shopping_cart, color: Colors.black),
           onPressed: () {
             Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const CartPage()),
-            );
+                context,
+                MaterialPageRoute( 
+                    builder: (context) => CartPage(
+                          token: widget.token,
+                        )));
           },
         ),
       ]),

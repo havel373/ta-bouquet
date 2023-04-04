@@ -154,7 +154,10 @@ class _ItemPageState extends State<ItemPage> {
           ),
         ],
       ),
-      bottomNavigationBar: ItemBottomNavBar(),
+      bottomNavigationBar: ItemBottomNavBar(
+        id: widget.id,
+        token: widget.token,
+      ),
     );
   }
 }
