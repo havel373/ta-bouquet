@@ -74,8 +74,13 @@ class _ItemsWidgetState extends State<ItemsWidget> {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => const ItemPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ItemPage(
+                                id: produk[index]['id'],
+                                token: widget.token,
+                              )));
                 },
                 child: Container(
                   width: 100,

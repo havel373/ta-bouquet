@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:clippy_flutter/arc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +7,13 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../components/IntemBottomNavBar.dart';
 import '../components/ItemAppBar.dart';
 
+import 'package:http/http.dart' as http;
+
 class ItemPage extends StatefulWidget {
-  const ItemPage({super.key});
+  final int id;
+  final int token;
+  const ItemPage({Key? key, required this.id, required this.token})
+      : super(key: key);
 
   @override
   State<ItemPage> createState() => _ItemPageState();
@@ -20,6 +27,39 @@ class _ItemPageState extends State<ItemPage> {
     Colors.indigo,
     Colors.orange
   ];
+  List produk = [];
+  bool isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    this.getdata();
+  }
+
+  void getdata() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+      var response = await http.get(Uri.parse(
+          'http://bouquet.pnseirampah-semodal.com/api/produk/' +
+              widget.id.toString()));
+      print('produk response detail produk : ' + response.body.toString());
+      if (response.statusCode == 200) {
+        var item = json.decode(response.body)['data'];
+        print(item);
+        setState(() {
+          produk = [item];
+          isLoading = false;
+        });
+      } else {
+        produk = [];
+        isLoading = false;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +69,14 @@ class _ItemPageState extends State<ItemPage> {
           ItemAppBar(),
           Padding(
             padding: EdgeInsets.all(16),
-            child: Image.asset(
-              'assets/images/1.png',
+            child: Container(
+              width: 200,
               height: 200,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 21, 195, 96),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage("${produk[0]['gambar']}"))),
             ),
           ),
           Arc(
@@ -91,7 +136,7 @@ class _ItemPageState extends State<ItemPage> {
                         child: Scrollbar(
                           child: SingleChildScrollView(
                             child: Text(
-                              "Karangan bunga yang memiliki 9 bunga. Bunga tersebut bunga palsu. Tahan lama Jika ingin request warna lain dapat menambahkan di keterangan saat memesan",
+                              "${produk[0]['deskripsi']}",
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 fontSize: 15,
