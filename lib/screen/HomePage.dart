@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:http/http.dart';
+import 'package:ta/screen/profiles/page/useraccountPage.dart';
 
 import '../components/Carrusel.dart';
 import '../components/CategoriesWidget.dart';
 import '../components/HomeAppBar.dart';
 import '../components/ItemsWidgets.dart';
 import 'dashboard.dart';
+import 'notifications/page/NotificationPage.dart';
 
 class HomePage extends StatefulWidget {
   final int token;
@@ -21,14 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedPageIndex = 0;
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
   @override
@@ -43,16 +37,11 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(top: 15),
             decoration: BoxDecoration(
               color: Color(0xFFEDECF2),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35),
-                topRight: Radius.circular(35),
-              ),
             ),
             child: Column(
               children: [
                 // CARRUCEL
                 Carrusel(),
-
                 Container(
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -70,28 +59,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-          )
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '',
           ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        onTap: _onItemTapped,
       ),
+
     );
+
   }
 }

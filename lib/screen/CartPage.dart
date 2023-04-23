@@ -38,10 +38,6 @@ class _CartPageState extends State<CartPage> {
             padding: EdgeInsets.only(top: 25),
             decoration: BoxDecoration(
               color: Color(0xFFEDECF2),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35),
-                topRight: Radius.circular(35),
-              ),
             ),
             child: SingleChildScrollView(
               child: Column(

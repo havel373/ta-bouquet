@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:ta/screen/checkoutPage.dart';
 
 class CartBottomNavBar extends StatefulWidget {
   const CartBottomNavBar({super.key});
@@ -47,13 +48,17 @@ class _CartBottomNavBarState extends State<CartBottomNavBar> {
                 color: Color.fromARGB(255, 49, 68, 55),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Text(
-                "Check Out",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>checkoutPage()));
+                },
+                child: Text("Check Out",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ), ),
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:ta/components/MainNavigation.dart';
 import 'package:ta/screen/HomePage.dart';
 import 'package:ta/screen/sign_up.dart';
 import 'package:ta/screen/dashboard.dart';
@@ -42,7 +43,7 @@ class _SignInScreenState extends State<loginpage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomePage(
+                            builder: (context) => MainNavigation(
                                   token: data['user']['id'],
                                 )),
                       );
