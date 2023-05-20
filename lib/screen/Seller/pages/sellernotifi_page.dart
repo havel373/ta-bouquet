@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class UserNotificationPage extends StatelessWidget {
+class NotifikasiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -9,21 +9,21 @@ class UserNotificationPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: NotificationPage(title: 'Notifikasi'),
+      home: NotifikasiPage(title: 'Notifikasi'),
     );
   }
 }
 
-class NotificationPage extends StatefulWidget {
-  NotificationPage({Key? key, required this.title}) : super(key: key);
+class NotifikasiPage extends StatefulWidget {
+  NotifikasiPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _NotificationPageState createState() => _NotificationPageState();
+  _NotifikasiPageState createState() => _NotifikasiPageState();
 }
 
-class _NotificationPageState extends State<NotificationPage> {
+class _NotifikasiPageState extends State<NotifikasiPage> {
   List<Notifikasi> notifikasiList = [
     Notifikasi('Notifikasi 1', false),
     Notifikasi('Notifikasi 2', false),

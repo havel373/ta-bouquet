@@ -2,18 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ta/screen/profiles/page/useraccountPage.dart';
 
-import '../screen/HomePage.dart';
-import '../screen/notifications/page/NotificationPage.dart';
+import '../../HomePage.dart';
+import '../../notifications/page/NotificationPage.dart';
+import '../pages/sellernotifi_page.dart';
+import '../pages/storePage.dart';
+import '../profileseller/seller_account_page.dart';
 
-class MainNavigation extends StatefulWidget {
+
+class SellerNavigation extends StatefulWidget {
   final int token;
 
-  MainNavigation({required this.token});
+  SellerNavigation({required this.token});
 
   @override
-  _MainNavigationState createState() => _MainNavigationState();
+  _SellerNavigationState createState() => _SellerNavigationState();
 }
-class _MainNavigationState extends State<MainNavigation> {
+class _SellerNavigationState extends State<SellerNavigation> {
   int _currentIndex = 0;
 
   void _onItemTapped(int index) {
@@ -29,8 +33,9 @@ class _MainNavigationState extends State<MainNavigation> {
         index: _currentIndex,
         children: [
           HomePage(token: widget.token),
-          UserNotificationPage(),
-          useraccountPage(),
+          NotifikasiApp(),
+          StorePage(token: widget.token),
+          SelleraccountPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -38,7 +43,7 @@ class _MainNavigationState extends State<MainNavigation> {
         selectedItemColor: Colors.green,
         currentIndex: _currentIndex,
         onTap: _onItemTapped,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -47,6 +52,9 @@ class _MainNavigationState extends State<MainNavigation> {
             icon: Icon(Icons.notifications),
             label: 'Notifications',
           ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.storefront),
+          label: 'Store'),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',

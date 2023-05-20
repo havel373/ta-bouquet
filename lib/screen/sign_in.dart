@@ -9,6 +9,8 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ta/themes/color.dart';
 
+import 'Seller/components/sellerNavigation.dart';
+
 class loginpage extends StatefulWidget {
   const loginpage({Key? key}) : super(key: key);
 
@@ -43,7 +45,7 @@ class _SignInScreenState extends State<loginpage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MainNavigation(
+                            builder: (context) => SellerNavigation(
                                   token: data['user']['id'],
                                 )),
                       );
