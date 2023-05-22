@@ -31,29 +31,57 @@ class _SignInScreenState extends State<loginpage> {
 
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
-        print(data['authorization']['access_token']);
-        showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text('Login Successfully'),
-                content: Text('Welcome ${data['user']['name']}'),
-                actions: <Widget>[
-                  TextButton(
-                    child: Text('OK'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SellerNavigation(
-                                  token: data['user']['id'],
-                                )),
-                      );
-                    },
-                  ),
-                ],
-              );
-            });
+        if (data['user']['role_id'] == "1") {
+          print(data['authorization']['access_token']);
+          print("penjual");
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Login Successfully'),
+                  content: Text('Welcome ${data['user']['name']}'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('OK'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SellerNavigation(
+                                    token: data['user']['id'],
+                                  )),
+                        );
+                      },
+                    ),
+                  ],
+                );
+              });
+        } else {
+          print(data['authorization']['access_token']);
+          print("pembeli");
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Login Successfully'),
+                  content: Text('Welcome ${data['user']['name']}'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('OK'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MainNavigation(
+                                    token: data['user']['id'],
+                                  )),
+                        );
+                      },
+                    ),
+                  ],
+                );
+              });
+        }
       } else {
         print('failed');
       }
