@@ -4,7 +4,14 @@ import 'package:ta/screen/notifications/page/sudahdibacaPage.dart';
 import 'package:ta/screen/notifications/page/tidakadanotifPage.dart';
 import 'package:ta/screen/pilihmetodepembayaranPage.dart';
 
-class checkoutPage extends StatelessWidget {
+class CheckoutPage extends StatefulWidget {
+  const CheckoutPage({Key? key}) : super(key: key);
+
+  @override
+  _CheckoutPageState createState() => _CheckoutPageState();
+}
+
+class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     Color backgroundColor = Color(0xFFCCD2E3);
@@ -21,15 +28,14 @@ class checkoutPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.only( top: 20, left: 18),
+                  padding: EdgeInsets.only(top: 20, left: 18),
                   child: const Text(
                     "Pesanan Saya",
                     style: TextStyle(
                         fontFamily: 'Oxygen',
                         fontSize: 26,
                         fontWeight: FontWeight.w700,
-                        color: Colors.black
-                    ),
+                        color: Colors.black),
                   ),
                 ),
               ],
@@ -48,7 +54,7 @@ class checkoutPage extends StatelessWidget {
                 ),
                 Container(
                   child: Text(
-                      "Jl. Eka Rasmi Gg. Saudara, Gedung Johor, Kec. Medan Johor, Kota Medan, Sumatera Utara 20147",
+                    "Jl. Eka Rasmi Gg. Saudara, Gedung Johor, Kec. Medan Johor, Kota Medan, Sumatera Utara 20147",
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
@@ -72,18 +78,21 @@ class checkoutPage extends StatelessWidget {
                     Container(
                       width: 22,
                       height: 24,
-                      child: Image.asset('assets/images/icon_pesanan.png',
-                        fit: BoxFit.contain,),
+                      child: Image.asset(
+                        'assets/images/icon_pesanan.png',
+                        fit: BoxFit.contain,
+                      ),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: 13),
-                      child: const Text("Rincian Pembayaran",
+                      child: const Text(
+                        "Rincian Pembayaran",
                         style: TextStyle(
                             fontSize: 14,
                             fontFamily: 'Oxygen',
                             fontWeight: FontWeight.w700,
-                            color: Colors.black
-                        ),),
+                            color: Colors.black),
+                      ),
                     ),
                   ],
                 ),
@@ -94,7 +103,7 @@ class checkoutPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        padding:EdgeInsets.only(left: 0),
+                        padding: EdgeInsets.only(left: 0),
                         child: Text(
                           "Subtotal untuk Produk",
                           style: TextStyle(color: Colors.black),
@@ -102,8 +111,10 @@ class checkoutPage extends StatelessWidget {
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 100),
-                        child: Text(" Rp.145000",
-                          style: TextStyle(color: Colors.black),),
+                        child: Text(
+                          " Rp.145000",
+                          style: TextStyle(color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
@@ -114,7 +125,7 @@ class checkoutPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        padding:EdgeInsets.only(left: 0),
+                        padding: EdgeInsets.only(left: 0),
                         child: Text(
                           "Subtotal Pengiriman",
                           style: TextStyle(color: Colors.black),
@@ -122,8 +133,10 @@ class checkoutPage extends StatelessWidget {
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 100),
-                        child: Text(" Rp.20000",
-                          style: TextStyle(color: Colors.black),),
+                        child: Text(
+                          " Rp.20000",
+                          style: TextStyle(color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
@@ -135,16 +148,24 @@ class checkoutPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        padding:EdgeInsets.only(left: 0),
+                        padding: EdgeInsets.only(left: 0),
                         child: Text(
                           "Total Pembayaran",
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 14),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14),
                         ),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 100),
-                        child: Text(" Rp.165000",
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 14),),
+                        child: Text(
+                          " Rp.165000",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14),
+                        ),
                       ),
                     ],
                   ),
@@ -161,32 +182,33 @@ class checkoutPage extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.only(left: 18),
-            child:
-            Row(
+            child: Row(
               children: [
                 Container(
-                  width: 22,
-                  height: 24,
-                  child: Icon(CupertinoIcons.money_dollar, color: Colors.black)
-                ),
+                    width: 22,
+                    height: 24,
+                    child:
+                        Icon(CupertinoIcons.money_dollar, color: Colors.black)),
                 Container(
                   padding: EdgeInsets.only(left: 13),
-                  child: const Text("Metode Pembayaran",
+                  child: const Text(
+                    "Metode Pembayaran",
                     style: TextStyle(
                         fontSize: 14,
                         fontFamily: 'Oxygen',
                         fontWeight: FontWeight.w700,
-                        color: Colors.black
-                    ),),
+                        color: Colors.black),
+                  ),
                 ),
                 Container(
                   child: TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) =>PilihanPembayaran())
-                      );
-                    },
-                    child: Text("Pilih Metode Pembayaran >")),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PilihanPembayaran()));
+                      },
+                      child: Text("Pilih Metode Pembayaran >")),
                 ),
               ],
             ),
@@ -194,19 +216,14 @@ class checkoutPage extends StatelessWidget {
           SizedBox(height: 10),
           Container(
             child: ElevatedButton(
-              onPressed: () {  },
+              onPressed: () {},
               child: Text("Pesan"),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
                     const Color.fromARGB(255, 49, 68, 55)),
               ),
-
             ),
           ),
-
-
-
-
         ],
       ),
     );

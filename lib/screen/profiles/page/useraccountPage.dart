@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ta/screen/profiles/page/editprofilePage.dart';
+import 'package:ta/screen/sign_in.dart';
+import 'package:ta/screen/startpage.dart';
 import 'package:ta/themes/color.dart';
 
 class useraccountPage extends StatelessWidget {
@@ -33,7 +35,7 @@ class useraccountPage extends StatelessWidget {
                   width: 59,
                   height: 59,
                   child: Image.asset('assets/images/photo_profile.png',
-                  fit: BoxFit.contain),
+                      fit: BoxFit.contain),
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 7),
@@ -41,15 +43,18 @@ class useraccountPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        child: Text("Desi",
-                        style: TextStyle(color: Colors.black),),
+                        child: Text(
+                          "Desi",
+                          style: TextStyle(color: Colors.black),
+                        ),
                       ),
                       Container(
                         child: TextButton(
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>editProfilePage()),
+                              MaterialPageRoute(
+                                  builder: (context) => editProfilePage()),
                             );
                           },
                           child: Text("Edit Profile"),
@@ -79,18 +84,21 @@ class useraccountPage extends StatelessWidget {
                       Container(
                         width: 22,
                         height: 24,
-                        child: Image.asset('assets/images/icon_pesanan.png',
-                        fit: BoxFit.contain,),
+                        child: Image.asset(
+                          'assets/images/icon_pesanan.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 13),
-                        child: const Text("Status Pesanan",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Oxygen',
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black
-                        ),),
+                        child: const Text(
+                          "Status Pesanan",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Oxygen',
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
@@ -104,20 +112,21 @@ class useraccountPage extends StatelessWidget {
                         child: Column(
                           children: [
                             Container(
-                              child: const Text("Dikirim",
-                              style: TextStyle(
-                                fontFamily: 'Oxygen',
-                                fontWeight: FontWeight.w700,
-                                fontSize: 16,
-                                color: Colors.black
-                              ),
+                              child: const Text(
+                                "Dikirim",
+                                style: TextStyle(
+                                    fontFamily: 'Oxygen',
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
+                                    color: Colors.black),
                               ),
                             ),
                             SizedBox(height: 20),
                             Container(
                               width: 36,
                               height: 34,
-                              child: Image.asset('assets/images/icon_dikirim.png'),
+                              child:
+                                  Image.asset('assets/images/icon_dikirim.png'),
                             )
                           ],
                         ),
@@ -126,20 +135,21 @@ class useraccountPage extends StatelessWidget {
                         child: Column(
                           children: [
                             Container(
-                              child: const Text("Diterima",
+                              child: const Text(
+                                "Diterima",
                                 style: TextStyle(
                                     fontFamily: 'Oxygen',
                                     fontWeight: FontWeight.w700,
                                     fontSize: 16,
-                                    color: Colors.black
-                                ),
+                                    color: Colors.black),
                               ),
                             ),
                             SizedBox(height: 20),
                             Container(
                               width: 36,
                               height: 34,
-                              child: Image.asset('assets/images/icon_diterima.png'),
+                              child: Image.asset(
+                                  'assets/images/icon_diterima.png'),
                             )
                           ],
                         ),
@@ -165,13 +175,14 @@ class useraccountPage extends StatelessWidget {
                   width: 257,
                   height: 41,
                   child: ElevatedButton(
-                    onPressed: () {  },
-                    child: Text("Ubah Sandi",
-                    style: TextStyle(color: Colors.black),
+                    onPressed: () {},
+                    child: Text(
+                      "Ubah Sandi",
+                      style: TextStyle(color: Colors.black),
                     ),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(
-                          255, 255, 255, 255)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromARGB(255, 255, 255, 255)),
                     ),
                   ),
                 ),
@@ -180,15 +191,21 @@ class useraccountPage extends StatelessWidget {
                   width: 257,
                   height: 41,
                   child: ElevatedButton(
-                    onPressed: () { },
-                    child: Text("Keluar",
-                        style: TextStyle(color: Colors.black),
-                  ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => startpage()),
+                      );
+                    },
+                    child: Text(
+                      "Keluar",
+                      style: TextStyle(color: Colors.black),
+                    ),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(
-                          255, 255, 255, 255)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromARGB(255, 255, 255, 255)),
+                    ),
                   ),
-                ),
                 ),
               ],
             ),

@@ -15,16 +15,15 @@ import '../components/CartBottomNavBar.dart';
 import '../components/CartItemSamples.dart';
 
 class CartItemSamples extends StatefulWidget {
-    final int token;
-  const CartItemSamples({Key? key, required this.token})
-      : super(key: key);
+  final int token;
+  const CartItemSamples({Key? key, required this.token}) : super(key: key);
 
   @override
   State<CartItemSamples> createState() => _CartItemSamplesState();
 }
 
 class _CartItemSamplesState extends State<CartItemSamples> {
-  List produk= [];
+  List produk = [];
   bool isLoading = false;
   @override
   void initState() {
@@ -54,6 +53,29 @@ class _CartItemSamplesState extends State<CartItemSamples> {
       }
     } catch (e) {
       print(e.toString());
+    }
+  }
+
+  void deleteData(String id) async {
+    try {
+      var url = Uri.parse(
+          'http://bouquet.pnseirampah-semodal.com/api/keranjang/' + id);
+
+      var response = await http.delete(url);
+      print('Delete response: ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        var responseBody = json.decode(response.body);
+        var item = responseBody['data'];
+        print('item dihapus: $item');
+        setState(() {
+          produk.remove(item);
+        });
+      } else {
+        print('Delete gagal. Pesan Error: ${response.body}');
+      }
+    } catch (e) {
+      print('Error delete data: $e');
     }
   }
 
@@ -95,10 +117,12 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                     height: 55,
                     width: 55,
                     decoration: BoxDecoration(
-                    color: primary,
-                    borderRadius: BorderRadius.circular(60 / 2),
-                    image: DecorationImage(
-                        fit: BoxFit.cover, image: NetworkImage("${produk[index]['gambar_produk']}"))),
+                        color: primary,
+                        borderRadius: BorderRadius.circular(60 / 2),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                "${produk[index]['gambar_produk']}"))),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
@@ -143,77 +167,114 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                         Container(
                           padding: EdgeInsets.only(bottom: 15),
                           child: IconButton(
-                              onPressed: (){
-                                showDialog(context: context, builder: (BuildContext context){
-                                  return AlertDialog(
-                                    contentPadding: EdgeInsets.all(0),
-                                    content: Card(
-                                      color: Colors.white,
-                                      child: Container(
-                                        width: double.infinity,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            Image.asset('assets/images/icon_alert.png',
-                                                fit: BoxFit.cover),
-                                            Container(
-                                              child: Text("Yakin ingin menghapus data ini?",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w700, fontFamily: 'Inter',
-                                                    fontSize: 16, color: Colors.black
-                                                ),),
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                "Data yang sudah dihapus tidak dapat kembali",
-                                                style: TextStyle(color: Colors.black),
-                                              ),
-                                            ),
-                                            SizedBox(height: 20),
-                                            Container(
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                children: [
-                                                  Container(
-                                                    child: ElevatedButton(
-                                                        onPressed: () {
-                                                          // Tutup popup card dan kembali ke halaman sebelumnya
-                                                          Navigator.of(context).pop();
-                                                        },
-                                                        child: Text("Kembali",
-                                                          style: TextStyle(color: Colors.black),),
-                                                        style: ButtonStyle(
-                                                          backgroundColor: MaterialStateProperty.all<Color>(
-                                                              const Color.fromARGB(
-                                                                  255, 255, 253, 253)),
-                                                        )
-                                                    ),
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        contentPadding: EdgeInsets.all(0),
+                                        content: Card(
+                                          color: Colors.white,
+                                          child: Container(
+                                            width: double.infinity,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: <Widget>[
+                                                Image.asset(
+                                                    'assets/images/icon_alert.png',
+                                                    fit: BoxFit.cover),
+                                                Container(
+                                                  child: Text(
+                                                    "Yakin ingin menghapus data ini?",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        fontFamily: 'Inter',
+                                                        fontSize: 16,
+                                                        color: Colors.black),
                                                   ),
-                                                  Container(
-                                                    child: ElevatedButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(context);
-                                                        },
-                                                        child: Text("OKE"),
-                                                        style: ButtonStyle(
-                                                          backgroundColor: MaterialStateProperty.all<Color>(
-                                                              const Color.fromARGB(255, 49, 68, 55)),
-                                                        )
-
-                                                    ),
+                                                ),
+                                                Container(
+                                                  child: Text(
+                                                    "Data yang sudah dihapus tidak dapat kembali",
+                                                    style: TextStyle(
+                                                        color: Colors.black),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                                SizedBox(height: 20),
+                                                Container(
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: [
+                                                      Container(
+                                                        child: ElevatedButton(
+                                                            onPressed: () {
+                                                              // Tutup popup card dan kembali ke halaman sebelumnya
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            },
+                                                            child: Text(
+                                                              "Kembali",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black),
+                                                            ),
+                                                            style: ButtonStyle(
+                                                              backgroundColor:
+                                                                  MaterialStateProperty.all<
+                                                                          Color>(
+                                                                      const Color
+                                                                              .fromARGB(
+                                                                          255,
+                                                                          255,
+                                                                          253,
+                                                                          253)),
+                                                            )),
+                                                      ),
+                                                      Container(
+                                                        child: ElevatedButton(
+                                                            onPressed: () {
+                                                              // deleteData produk[index]['id'].toString(); using api
+                                                              deleteData(produk[
+                                                                          index]
+                                                                      ['id']
+                                                                  .toString());
+                                                              // reload page
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            },
+                                                            child: Text("OKE"),
+                                                            style: ButtonStyle(
+                                                              backgroundColor:
+                                                                  MaterialStateProperty.all<
+                                                                          Color>(
+                                                                      const Color
+                                                                              .fromARGB(
+                                                                          255,
+                                                                          49,
+                                                                          68,
+                                                                          55)),
+                                                            )),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  );
-                                }
-                                );
+                                      );
+                                    });
                               },
-                              icon: Icon(Icons.delete, size: 50,color: Colors.black,)),
+                              icon: Icon(
+                                Icons.delete,
+                                size: 50,
+                                color: Colors.black,
+                              )),
                         ),
                       ],
                     ),

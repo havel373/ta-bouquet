@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '../../../components/ItemsWidgets.dart';
 import 'bungaasli_page.dart';
 import 'bungapalsu_page.dart';
+import 'package:http/http.dart' as http;
 
 class StorePage extends StatefulWidget {
   final int token;
@@ -14,16 +16,52 @@ class StorePage extends StatefulWidget {
 class _StorePageState extends State<StorePage> with TickerProviderStateMixin {
   TabController? _tabController;
 
+  List<Color> Clrs = [
+    Colors.red,
+    Colors.blue,
+    Colors.green,
+    Colors.indigo,
+    Colors.orange
+  ];
+  List produk = [];
+  List toko = [];
+  bool isLoading = false;
+
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    this.getdata();
   }
 
   @override
   void dispose() {
     _tabController?.dispose();
     super.dispose();
+  }
+
+  Future<List<dynamic>> getdata() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+      var response = await http
+          .get(Uri.parse('http://bouquet.pnseirampah-semodal.com/api/produk'));
+      print('produk response detail produk : ' + response.body.toString());
+      if (response.statusCode == 200) {
+        var item = json.decode(response.body)['data'];
+        print('toko cek : ' + item.toString());
+        setState(() {
+          produk = item;
+          isLoading = false;
+        });
+      } else {
+        produk = [];
+        isLoading = false;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+    return produk;
   }
 
   @override
@@ -63,7 +101,8 @@ class _StorePageState extends State<StorePage> with TickerProviderStateMixin {
                             hintText: 'Cari di sini...',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(width: 0, style: BorderStyle.none),
+                              borderSide:
+                                  BorderSide(width: 0, style: BorderStyle.none),
                             ),
                           ),
                         ),
@@ -78,23 +117,26 @@ class _StorePageState extends State<StorePage> with TickerProviderStateMixin {
                       children: [
                         const CircleAvatar(
                           radius: 30,
-                          backgroundImage: AssetImage('assets/images/store_logo.jpg'),
+                          backgroundImage:
+                              AssetImage('assets/images/store_logo.jpg'),
                         ),
                         SizedBox(width: 10),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'Toba Money Bouquet',
+                            Text(
+                              //call data from getData()
+                              '${produk[0]['nama_toko']}',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold,
                                 fontSize: 20,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             Row(
                               children: const [
-                                Icon(Icons.star, color: Colors.yellow, size: 20),
+                                Icon(Icons.star,
+                                    color: Colors.yellow, size: 20),
                                 SizedBox(width: 5),
                                 Text(
                                   '4.5',
@@ -125,7 +167,8 @@ class _StorePageState extends State<StorePage> with TickerProviderStateMixin {
             controller: _tabController,
             children: [
               SingleChildScrollView(
-                child: ItemsWidget(token: widget.token),),
+                child: ItemsWidget(token: widget.token),
+              ),
               Column(
                 children: [
                   ListTile(
@@ -133,7 +176,9 @@ class _StorePageState extends State<StorePage> with TickerProviderStateMixin {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => AsliPage(token: widget.token)),
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                AsliPage(token: widget.token)),
                       );
                     },
                   ),
