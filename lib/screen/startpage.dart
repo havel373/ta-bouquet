@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:ta/screen/notifications/page/NotificationPage.dart';
 import 'chooseuser.dart';
+import 'package:ta/screen/sign_in.dart';
 
 class startpage extends StatelessWidget {
   const startpage({super.key});
@@ -36,7 +37,7 @@ class startpage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => chooseuser()));
+                                builder: (context) => loginpage()));
                       },
                       child: const Text(
                         "Mulai",
