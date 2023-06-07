@@ -1,83 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:ta/themes/color.dart';
-import 'package:http/http.dart' as http;
-import 'package:awesome_rating/awesome_rating.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:ta/screen/CartPage.dart';
 
-import '../components/CartAppBar.dart';
-import '../components/CartBottomNavBar.dart';
-import '../components/CartItemSamples.dart';
+class CartItemSamples extends StatelessWidget {
+  final List produk;
+  final Function(Map<String, dynamic> product) onDeleteProduct;
 
-class CartItemSamples extends StatefulWidget {
-  final int token;
-  const CartItemSamples({Key? key, required this.token}) : super(key: key);
-
-  @override
-  State<CartItemSamples> createState() => _CartItemSamplesState();
-}
-
-class _CartItemSamplesState extends State<CartItemSamples> {
-  List produk = [];
-  bool isLoading = false;
-  @override
-  void initState() {
-    super.initState();
-    this.getdata();
-  }
-
-  void getdata() async {
-    try {
-      setState(() {
-        isLoading = true;
-      });
-      var response = await http.get(Uri.parse(
-          'http://bouquet.pnseirampah-semodal.com/api/keranjang/' +
-              widget.token.toString()));
-      print('produk response detail produk : ' + response.body.toString());
-      if (response.statusCode == 200) {
-        var item = json.decode(response.body)['data'];
-        print(item);
-        setState(() {
-          produk = item;
-          isLoading = false;
-        });
-      } else {
-        produk = [];
-        isLoading = false;
-      }
-    } catch (e) {
-      print(e.toString());
-    }
-  }
-
-  void deleteData(String id) async {
-    try {
-      var url = Uri.parse(
-          'http://bouquet.pnseirampah-semodal.com/api/keranjang/' + id);
-
-      var response = await http.delete(url);
-      print('Delete response: ${response.statusCode}');
-
-      if (response.statusCode == 200) {
-        var responseBody = json.decode(response.body);
-        var item = responseBody['data'];
-        print('item dihapus: $item');
-        setState(() {
-          produk.remove(item);
-        });
-      } else {
-        print('Delete gagal. Pesan Error: ${response.body}');
-      }
-    } catch (e) {
-      print('Error delete data: $e');
-    }
-  }
+  const CartItemSamples(
+      {super.key, required this.produk, required this.onDeleteProduct});
 
   @override
   Widget build(BuildContext context) {
@@ -237,15 +166,9 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                                                       Container(
                                                         child: ElevatedButton(
                                                             onPressed: () {
-                                                              // deleteData produk[index]['id'].toString(); using api
-                                                              deleteData(produk[
-                                                                          index]
-                                                                      ['id']
-                                                                  .toString());
-                                                              // reload page
-                                                              Navigator.of(
-                                                                      context)
-                                                                  .pop();
+                                                              onDeleteProduct(
+                                                                  produk[
+                                                                      index]);
                                                             },
                                                             child: Text("OKE"),
                                                             style: ButtonStyle(
