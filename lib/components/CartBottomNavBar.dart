@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:ta/screen/checkoutPage.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:ta/components/custom_webview.dart';
+import 'package:ta/screen/checkoutPage.dart';
 
 class CartBottomNavBar extends StatefulWidget {
   final int token;
@@ -95,7 +95,16 @@ class _CartBottomNavBarState extends State<CartBottomNavBar> {
         },
       );
 
-      print('checkout response: ' + response.body.toString());                                                                                                   
+      print('checkout response: ' + response.body.toString());
+
+      // Redirect After Request Checkout
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => CustomWebview(
+                    redirectUrl:
+                        "https://checkout-staging.xendit.co/v2/6480411b79b419e752b20b3d",
+                  )));
 
       if (response.statusCode == 200) {
         // Success

@@ -41,6 +41,9 @@ dependencies:
   card_swiper: ^2.0.4
   clippy_flutter: ^1.1.1
   flutter_rating_bar: ^4.0.1
+  flutter_inappwebview: ^5.7.2+3
+  url_launcher: ^6.1.11
+  shared_preferences: ^2.1.1
 
 dev_dependencies:
   flutter_test:

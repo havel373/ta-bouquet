@@ -1,14 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:ta/themes/color.dart';
-import 'package:http/http.dart' as http;
-import 'package:awesome_rating/awesome_rating.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:ta/screen/CartPage.dart';
 
 import '../components/CartAppBar.dart';
 import '../components/CartBottomNavBar.dart';

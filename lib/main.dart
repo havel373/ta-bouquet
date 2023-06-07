@@ -1,5 +1,3 @@
-import 'package:ta/screen/sign_up.dart';
-import 'package:ta/screen/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:ta/screen/startpage.dart';
 
@@ -16,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: const startpage(),
+      home: const StartPage(),
     );
   }
 }
