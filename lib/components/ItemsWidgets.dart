@@ -63,7 +63,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
       itemCount: produk.length,
       itemBuilder: (BuildContext ctx, index) {
         return Container(
-          padding: EdgeInsets.only(left: 15, right: 15, top: 10),
+          padding: EdgeInsets.only(left: 15, right: 10, top: 10),
           // margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10), // this was before
           margin: const EdgeInsets.fromLTRB(10, 0, 10, 16),
           decoration: BoxDecoration(

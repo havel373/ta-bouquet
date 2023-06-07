@@ -104,16 +104,6 @@ class _CartItemSamplesState extends State<CartItemSamples> {
               child: Row(
                 children: [
                   Container(
-                    height: 30,
-                    width: 30,
-                    child: Radio(
-                      value: "",
-                      groupValue: '',
-                      activeColor: Color.fromARGB(255, 0, 0, 0),
-                      onChanged: (index) {},
-                    ),
-                  ),
-                  Container(
                     height: 55,
                     width: 55,
                     decoration: BoxDecoration(
@@ -175,16 +165,18 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                                         contentPadding: EdgeInsets.all(0),
                                         content: Card(
                                           color: Colors.white,
-                                          child: Container(
-                                            width: double.infinity,
                                             child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
                                               mainAxisSize: MainAxisSize.min,
                                               children: <Widget>[
-                                                Image.asset(
-                                                    'assets/images/icon_alert.png',
-                                                    fit: BoxFit.cover),
                                                 Container(
-                                                  child: Text(
+                                                  padding: EdgeInsets.only(left: 25),
+                                                  child: Image.asset(
+                                                    'assets/images/icon_alert.png',
+                                                    fit: BoxFit.contain)
+                                                ),
+                                                Container(
+                                                  child: const Text(
                                                     "Yakin ingin menghapus data ini?",
                                                     style: TextStyle(
                                                         fontWeight:
@@ -195,10 +187,13 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                                                   ),
                                                 ),
                                                 Container(
-                                                  child: Text(
+                                                  padding: EdgeInsets.only(left: 10),
+                                                  child: const Text(
                                                     "Data yang sudah dihapus tidak dapat kembali",
                                                     style: TextStyle(
-                                                        color: Colors.black),
+                                                        color: Colors.black,
+
+                                                    ),
                                                   ),
                                                 ),
                                                 SizedBox(height: 20),
@@ -265,14 +260,14 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                                                 ),
                                               ],
                                             ),
-                                          ),
+
                                         ),
                                       );
                                     });
                               },
                               icon: Icon(
                                 Icons.delete,
-                                size: 50,
+                                size: 30,
                                 color: Colors.black,
                               )),
                         ),

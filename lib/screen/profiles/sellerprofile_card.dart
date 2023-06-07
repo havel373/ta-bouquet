@@ -15,12 +15,7 @@ class SellerProfileCard extends StatelessWidget {
       body: Center(
         child: InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SellerNavigation(token: data['user']['id']),
-              ),
-            );
+
           },
           child: Card(
             margin: EdgeInsets.all(20.0),
