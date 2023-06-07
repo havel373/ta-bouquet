@@ -1,18 +1,8 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:http/http.dart';
-import 'package:ta/screen/profiles/page/useraccountPage.dart';
 
 import '../components/Carrusel.dart';
-import '../components/CategoriesWidget.dart';
 import '../components/HomeAppBar.dart';
 import '../components/ItemsWidgets.dart';
-import 'dashboard.dart';
-import 'notifications/page/NotificationPage.dart';
 
 class HomePage extends StatefulWidget {
   final int token;
@@ -23,47 +13,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldState,
-      body: ListView(
-        children: [
-          HomeAppBar(data: _scaffoldState, token: widget.token),
-          Container(
-            // height: 500,
-            padding: EdgeInsets.only(top: 15),
-            decoration: BoxDecoration(
-              color: Color(0xFFEDECF2),
-            ),
-            child: Column(
-              children: [
-                // CARRUCEL
-                Carrusel(),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                  child: Text(
-                    "Produk Kami",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 0, 0, 0), //0xFF4C53A2
+      body: Banner(
+        location: BannerLocation.topEnd,
+        message: "Alamsyah",
+        textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+        layoutDirection: TextDirection.rtl,
+        child: ListView(
+          children: [
+            HomeAppBar(data: _scaffoldState, token: widget.token),
+            Container(
+              // height: 500,
+              padding: EdgeInsets.only(top: 15),
+
+              decoration: BoxDecoration(
+                color: Color(0xFFEDECF2),
+              ),
+              child: Column(
+                children: [
+                  // CARRUCEL
+                  Carrusel(),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                    child: Text(
+                      "Produk Kami",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0), //0xFF4C53A2
+                      ),
                     ),
                   ),
-                ),
-                ItemsWidget(
-                  token: widget.token,
-                ),
-              ],
+                  ItemsWidget(
+                    token: widget.token,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-
     );
-
   }
 }
