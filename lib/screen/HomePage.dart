@@ -18,45 +18,39 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldState,
-      body: Banner(
-        location: BannerLocation.topEnd,
-        message: "Alamsyah",
-        textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
-        layoutDirection: TextDirection.rtl,
-        child: ListView(
-          children: [
-            HomeAppBar(data: _scaffoldState, token: widget.token),
-            Container(
-              // height: 500,
-              padding: EdgeInsets.only(top: 15),
+      body: ListView(
+        children: [
+          HomeAppBar(data: _scaffoldState, token: widget.token),
+          Container(
+            // height: 500,
+            padding: EdgeInsets.only(top: 15),
 
-              decoration: BoxDecoration(
-                color: Color(0xFFEDECF2),
-              ),
-              child: Column(
-                children: [
-                  // CARRUCEL
-                  Carrusel(),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                    child: Text(
-                      "Produk Kami",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 0, 0, 0), //0xFF4C53A2
-                      ),
+            decoration: BoxDecoration(
+              color: Color(0xFFEDECF2),
+            ),
+            child: Column(
+              children: [
+                // CARRUCEL
+                Carrusel(),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  child: Text(
+                    "Produk Kami",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 0, 0), //0xFF4C53A2
                     ),
                   ),
-                  ItemsWidget(
-                    token: widget.token,
-                  ),
-                ],
-              ),
+                ),
+                ItemsWidget(
+                  token: widget.token,
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
