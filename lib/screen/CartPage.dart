@@ -111,10 +111,7 @@ class _CartPageState extends State<CartPage> {
                             color: Color.fromARGB(255, 0, 0, 0),
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
+
                         ),
                       ],
                     ),

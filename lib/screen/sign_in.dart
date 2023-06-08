@@ -50,7 +50,7 @@ class _SignInScreenState extends State<loginpage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SellerNavigation(
+                              builder: (context) => MainNavigation(
                                     token: data['user']['id'],
                                   )),
                         );
@@ -75,7 +75,7 @@ class _SignInScreenState extends State<loginpage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MainNavigation(
+                              builder: (context) => SellerNavigation(
                                     token: data['user']['id'],
                                   )),
                         );

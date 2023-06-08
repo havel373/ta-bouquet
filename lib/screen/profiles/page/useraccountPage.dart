@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ta/core/session/session_manager.dart';
 import 'package:ta/screen/profiles/page/editprofilePage.dart';
 
+import '../../Seller/pages/changepassword_page.dart';
+
 class useraccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class useraccountPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => editProfilePage()),
+                                  builder: (context) => EditProfilePage()),
                             );
                           },
                           child: Text("Edit Profile"),
@@ -173,7 +175,12 @@ class useraccountPage extends StatelessWidget {
                   width: 257,
                   height: 41,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>ChangePasswordPage()),
+                      );
+                    },
                     child: Text(
                       "Ubah Sandi",
                       style: TextStyle(color: Colors.black),

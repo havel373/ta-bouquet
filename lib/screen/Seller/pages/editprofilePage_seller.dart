@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class EditProfilePage extends StatefulWidget {
+class EditProfilePageSeller extends StatefulWidget {
   @override
-  _EditProfilePageState createState() => _EditProfilePageState();
+  _EditProfilePageSellerState createState() => _EditProfilePageSellerState();
 }
 
-class _EditProfilePageState extends State<EditProfilePage> {
+class _EditProfilePageSellerState extends State<EditProfilePageSeller> {
   String selectedProvince = '';
   String selectedDistrict = '';
   String selectedSubdistrict = '';

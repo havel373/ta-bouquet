@@ -34,10 +34,6 @@ class CartAppBar extends StatelessWidget {
             ),
           ),
           Spacer(),
-          Icon(
-            Icons.more_vert, size: 30,
-            color: Color.fromARGB(255, 0, 0, 0), //0xFF4C53A2
-          ),
         ],
       ),
     );

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ta/screen/Seller/pages/pemesanan_page.dart';
 import 'package:ta/screen/profiles/page/editprofilePage.dart';
 import 'package:ta/themes/color.dart';
+
+import '../pages/addproduct_page.dart';
+import '../pages/changepassword_page.dart';
+import '../pages/editprofilePage_seller.dart';
 
 class SelleraccountPage extends StatelessWidget {
   @override
@@ -51,7 +56,7 @@ class SelleraccountPage extends StatelessWidget {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) =>editProfilePage()),
+                                MaterialPageRoute(builder: (context) =>EditProfilePageSeller()),
                               );
                             },
                             child: Text("Edit Profile"),
@@ -179,7 +184,7 @@ class SelleraccountPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) =>editProfilePage()),
+                          MaterialPageRoute(builder: (context) =>AddProductPage()),
                         );
                       },
                       child: Text("Tambah Produk",
@@ -196,7 +201,12 @@ class SelleraccountPage extends StatelessWidget {
                     width: 257,
                     height: 41,
                     child: ElevatedButton(
-                      onPressed: () {  },
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) =>ChangePasswordPage()),
+                        );
+                      },
                       child: Text("Ubah Sandi",
                         style: TextStyle(color: Colors.black),
                       ),
@@ -211,7 +221,9 @@ class SelleraccountPage extends StatelessWidget {
                     width: 257,
                     height: 41,
                     child: ElevatedButton(
-                      onPressed: () { },
+                      onPressed: () {
+                        SystemNavigator.pop();
+                      },
                       child: Text("Keluar",
                         style: TextStyle(color: Colors.black),
                       ),
