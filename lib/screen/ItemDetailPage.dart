@@ -1,13 +1,12 @@
 import 'dart:convert';
 
 import 'package:clippy_flutter/arc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:http/http.dart' as http;
+
 import '../components/IntemBottomNavBar.dart';
 import '../components/ItemAppBar.dart';
-
-import 'package:http/http.dart' as http;
 
 class ItemPage extends StatefulWidget {
   final int id;
@@ -73,10 +72,13 @@ class _ItemPageState extends State<ItemPage> {
               width: 200,
               height: 200,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 21, 195, 96),
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("${produk[0]['gambar']}"))),
+                color: Color.fromARGB(255, 21, 195, 96),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      produk.isNotEmpty ? "${produk[0]['gambar']}" : ""),
+                ),
+              ),
             ),
           ),
           Arc(
@@ -136,7 +138,9 @@ class _ItemPageState extends State<ItemPage> {
                         child: Scrollbar(
                           child: SingleChildScrollView(
                             child: Text(
-                              "${produk[0]['deskripsi']}",
+                              produk.isNotEmpty
+                                  ? "${produk[0]['deskripsi']}"
+                                  : "",
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 fontSize: 15,

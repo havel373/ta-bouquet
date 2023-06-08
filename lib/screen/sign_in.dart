@@ -1,12 +1,12 @@
 import 'dart:convert';
-import 'package:ta/components/MainNavigation.dart';
-import 'package:ta/screen/HomePage.dart';
-import 'package:ta/screen/sign_up.dart';
-import 'package:ta/screen/dashboard.dart';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:flutter/src/widgets/basic.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:ta/components/MainNavigation.dart';
+import 'package:ta/core/model/user_model.dart';
+import 'package:ta/core/session/session_manager.dart';
+import 'package:ta/core/session/user_storage.dart';
+import 'package:ta/screen/sign_up.dart';
 import 'package:ta/themes/color.dart';
 
 import 'Seller/components/sellerNavigation.dart';
@@ -31,6 +31,9 @@ class _SignInScreenState extends State<loginpage> {
 
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
+        storage.authorization = Authorization.fromMap(data['authorization']);
+        storage.user = User.fromMap(data['user']);
+        SessionManager.addSession();
         if (data['user']['role_id'] == "1") {
           print(data['authorization']['access_token']);
           print("penjual");

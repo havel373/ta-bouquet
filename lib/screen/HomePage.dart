@@ -1,18 +1,8 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:http/http.dart';
-import 'package:ta/screen/profiles/page/useraccountPage.dart';
 
 import '../components/Carrusel.dart';
-import '../components/CategoriesWidget.dart';
 import '../components/HomeAppBar.dart';
 import '../components/ItemsWidgets.dart';
-import 'dashboard.dart';
-import 'notifications/page/NotificationPage.dart';
 
 class HomePage extends StatefulWidget {
   final int token;
@@ -23,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -35,6 +24,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             // height: 500,
             padding: EdgeInsets.only(top: 15),
+
             decoration: BoxDecoration(
               color: Color(0xFFEDECF2),
             ),
@@ -62,8 +52,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-
     );
-
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ta/core/session/session_manager.dart';
 import 'package:ta/screen/profiles/page/editprofilePage.dart';
-import 'package:ta/screen/sign_in.dart';
-import 'package:ta/screen/startpage.dart';
-import 'package:ta/themes/color.dart';
 
 import '../../Seller/pages/changepassword_page.dart';
 
@@ -199,10 +197,7 @@ class useraccountPage extends StatelessWidget {
                   height: 41,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => startpage()),
-                      );
+                      SessionManager.clearSession(context);
                     },
                     child: Text(
                       "Keluar",
